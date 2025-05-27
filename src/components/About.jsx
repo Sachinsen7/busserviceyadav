@@ -52,9 +52,9 @@ const About = () => (
           background:
             "linear-gradient(135deg, #F1F5F9 0%, #D1FAE5 50%, #FEF3C7 100%)",
         }}
-        className="container mx-auto py-10 px-4 "
+        className="w-full mx-auto py-10 px-4 "
       >
-        <h2 className="text-2xl font-bold text-center text-[#1E3A8A] mb-6">
+        <h2 className=" text-2xl font-bold text-center text-[#1E3A8A] mb-6">
           Our Journey
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -78,7 +78,6 @@ const About = () => (
         </div>
       </motion.section>
 
-      {/* Team Showcase */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -94,17 +93,17 @@ const About = () => (
             {
               name: "Amit Yadav",
               role: "Founder & CEO",
-              image: "/images/team-1.jpg",
+              image: "https://randomuser.me/api/portraits/men/32.jpg",
             },
             {
               name: "Priya Sharma",
               role: "Operations Manager",
-              image: "/images/team-2.jpg",
+              image: "https://randomuser.me/api/portraits/women/44.jpg",
             },
             {
               name: "Ravi Patel",
               role: "Customer Support Lead",
-              image: "/images/team-3.jpg",
+              image: "https://randomuser.me/api/portraits/men/65.jpg",
             },
           ].map((member, index) => (
             <motion.div
@@ -127,7 +126,7 @@ const About = () => (
               <h3 className="text-lg font-bold text-[#1E3A8A] mt-4">
                 {member.name}
               </h3>
-              <p className="text-white">{member.role}</p>
+              <p className="text-[#4B5563]">{member.role}</p>
             </motion.div>
           ))}
         </div>
@@ -148,7 +147,7 @@ const About = () => (
         <h2 className="text-2xl font-bold text-[#1E3A8A] mb-4">
           Ready to Travel with Us?
         </h2>
-        <p className="text-white mb-6">
+        <p className="text-[#4B5563] mb-6">
           Join thousands of happy travelers and book your next journey today!
         </p>
         <motion.div whileHover={{ scale: 1.05 }}>
