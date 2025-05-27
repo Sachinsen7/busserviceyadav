@@ -52,7 +52,7 @@ const About = () => (
           background:
             "linear-gradient(135deg, #F1F5F9 0%, #D1FAE5 50%, #FEF3C7 100%)",
         }}
-        className="w-full mx-auto py-10 px-4 "
+        className="w-full mx-auto py-10 px-4"
       >
         <h2 className=" text-2xl font-bold text-center text-[#1E3A8A] mb-6">
           Our Journey
