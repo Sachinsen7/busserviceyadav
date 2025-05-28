@@ -5,12 +5,7 @@ import Hero from "../components/Hero.jsx";
 import TourCard from "../components/tourCard.jsx";
 import BookingForm from "../components/BookingForm.jsx";
 import Footer from "../components/Footer.jsx";
-// import delhi from "../assets/delhi.jpg";
-// import agra from "../assets/agra.jpg";
-// import jaipur from "../assets/jaipur.jpg";
-// import hyderabad from "../assets/hyederabad.jpg";
-// import mumbai from "../assets/mumba.jpg";
-// import chennai from "../assets/chennai.jpg";
+
 import Gallery from "../components/Gallery.jsx";
 import Services from "../components/Services.jsx";
 import Packages from "../components/Packages.jsx";
