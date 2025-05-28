@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../public/logoBus.png";
+import { motion } from "framer-motion";
+import logoBus from "../assets/logoBus.png";
+
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const [darkMode, setDarkMode] = useState();
@@ -11,48 +13,71 @@ function Header() {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // const toggleDarkMode = () => {
-  //   setDarkMode((prev) => !prev);
-  // };
+  const linkVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.1, transition: { duration: 0.3, ease: "easeOut" } },
+  };
+
+  const underlineVariants = {
+    initial: { width: "0%" },
+    hover: { width: "100%", transition: { duration: 0.3, ease: "easeOut" } },
+    active: { width: "100%", transition: { duration: 0.3 } },
+  };
 
   return (
-    <header
-      style={{
-        backgroundImage: "linear-gradient(135deg, #1E3A8A 0%, #10B981 100%)",
-      }}
-      className=" text-white sm:p-7 raleway-custom "
-    >
+    <header className="bg-neutralDark text-white sm:p-7 JosefinSans">
       <nav className="container mx-auto flex justify-between">
-        <h1 className="sm:text-xl text-sm font-bold">
-          <a className="hidden sm:block" href="/">
+        <h1 className="sm:text-xl text-sm ">
+          <a className="hidden sm:block" href="/home">
             Yadav Bus Service
           </a>
           <a href="/home" className="cursor-pointer">
             {" "}
-            <img src={logo} alt="" className="w-32 h-28 sm:hidden" />
+            <img src={logoBus} alt="" className="w-32 h-28 sm:hidden" />
           </a>
         </h1>
-        <ul className="flex space-x-4 font-bold font-raleway hidden">
-          <NavLink className="hover:text-[#F59E0B]" to={"/home"}>
-            Home
-          </NavLink>
-          <NavLink className="hover:text-[#F59E0B]" to={"/package"}>
-            Packages
-          </NavLink>
-          <NavLink className="hover:text-[#F59E0B]" to={"/service"}>
-            Service
-          </NavLink>
-          <NavLink className="hover:text-[#F59E0B]" to={"/gallery"}>
-            Gallery
-          </NavLink>
-          <NavLink className="hover:text-[#F59E0B]" to={"/contact"}>
-            Contact
-          </NavLink>
-          <NavLink className="hover:text-[#F59E0B]" to={"/about"}>
-            About
-          </NavLink>
+        <ul className="space-x-4  hidden sm:flex text-lg font-raleway">
+          {[
+            { to: "/home", label: "Home" },
+            { to: "/package", label: "Packages" },
+            { to: "/service", label: "Service" },
+            { to: "/gallery", label: "Gallery" },
+            { to: "/contact", label: "Contact" },
+            { to: "/about", label: "About" },
+          ].map((link, index) => (
+            <motion.li
+              key={index}
+              variants={linkVariants}
+              initial="initial"
+              whileHover="hover"
+              className="relative"
+            >
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  `block text-white hover:text-accent-gold transition-colors duration-300 ${
+                    isActive ? "text-accent-gold" : ""
+                  }`
+                }
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.label}
+                    <motion.span
+                      variants={underlineVariants}
+                      initial="initial"
+                      animate={isActive ? "active" : "initial"}
+                      whileHover="hover"
+                      className="absolute left-0 bottom-[-2px] h-0.5 bg-accent-gold"
+                    />
+                  </>
+                )}
+              </NavLink>
+            </motion.li>
+          ))}
         </ul>
-        <button className="bg-[#F59E0B] text-[#1E3A8A] px-4 py-2 rounded-lg font-bold font-raleway hover:bg-[#1E3A8A] hover:text-[#F59E0B] hidden">
+        <button className="bg-secondary text-white px-4 py-2 rounded-lg  transition-colors duration-200 hover:bg-[#5A9AA3] hidden sm:block">
           <a href="/book">Book Now</a>
         </button>
 
