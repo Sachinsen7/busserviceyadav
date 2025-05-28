@@ -1,14 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Header from "../components/Header.jsx";
+
 import Hero from "../components/Hero.jsx";
 import TourCard from "../components/tourCard.jsx";
 import BookingForm from "../components/BookingForm.jsx";
-import Footer from "../components/Footer.jsx";
 
 import Gallery from "../components/Gallery.jsx";
 import Services from "../components/Services.jsx";
 import Packages from "../components/Packages.jsx";
+import About from "../components/About.jsx";
+import Contact from "../components/Contact.jsx";
 
 const headingVariants = {
   hidden: { opacity: 0, x: -50 },
@@ -63,7 +64,6 @@ const Home = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col font-raleway bg-white"
     >
-      <Header />
       <main className="flex-grow">
         <Hero />
 
@@ -73,7 +73,7 @@ const Home = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-2xl font-bold text-center text-[#1E3A8A] mb-6"
+            className="text-3xl font-bold text-center text-primary-blue mb-8"
           >
             Explore Top Destinations
           </motion.h2>
@@ -92,8 +92,11 @@ const Home = () => {
         <Services />
         <Packages />
         <BookingForm />
+        <div className="border-b border-neutralDark border-2"></div>
+        <About />
+        <div className="border-b border-neutralDark border-2"></div>
+        <Contact />
       </main>
-      <Footer />
     </motion.div>
   );
 };
