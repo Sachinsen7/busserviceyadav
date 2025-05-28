@@ -1,5 +1,4 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
@@ -13,20 +12,24 @@ import TourCard from "./components/tourCard.jsx";
 import BookingForm from "./components/BookingForm.jsx";
 import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
+import Layout from "./Layout.jsx";
+import Privacy from "./Pages/Privacy.jsx";
+import NotFound from "./Pages/Notfound.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/package" element={<Packages />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/service" element={<Services />} />
-        <Route path="/tourcard" element={<TourCard />} />
-        <Route path="/bookingForm" element={<BookingForm />} />
-
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/package" element={<Packages />} />
+          <Route path="/service" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>
