@@ -18,11 +18,7 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={sectionVariants}
-      style={{
-        background:
-          "linear-gradient(135deg, #1E3A8A 0%, #6B21A8 50%, #F59E0B 100%)",
-      }}
-      className=" text-white py-10 font-raleway"
+      className=" text-white py-10 font-raleway bg-neutralDark"
     >
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Company Info */}
@@ -75,14 +71,19 @@ const Footer = () => {
               <Link to="/contact" className="hover:underline transition-colors">
                 Contact
               </Link>
-              <li>
-                <Link
-                  to="/about"
-                  className="hover:underline  transition-colors"
-                >
-                  About
-                </Link>
-              </li>
+            </li>
+            <li>
+              <Link to="/about" className="hover:underline  transition-colors">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/privacy"
+                className="hover:underline  transition-colors"
+              >
+                Privacy Policy
+              </Link>
             </li>
           </ul>
         </motion.div>

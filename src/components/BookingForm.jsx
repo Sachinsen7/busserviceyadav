@@ -6,10 +6,6 @@ const BookingForm = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.6 }}
-    style={{
-      backgroundImage:
-        "linear-gradient(135deg, #F1F5F9 0%, #D1FAE5 50%, #FEF3C7 100%)",
-    }}
     className="w-full mx-auto py-10 px-4 font-raleway "
   >
     <h2 className="text-2xl font-bold text-center text-[#1E3A8A] mb-6 font-raleway">
@@ -34,7 +30,7 @@ const BookingForm = () => (
         whileHover={{ scale: 1.05, backgroundColor: "#F59E0B" }}
         whileTap={{ scale: 0.95 }}
         type="submit"
-        className="w-full bg-[#1E3A8A] text-white p-2 rounded hover:bg-[#F59E0B]"
+        className="w-full bg-accent text-white p-2 rounded  cursor-pointer font-semibold"
       >
         Search Buses
       </motion.button>
