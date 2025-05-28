@@ -78,9 +78,9 @@ const Hero = () => {
                     {slide.subtitle}
                   </p>
                   <motion.button
-                    whileHover={{ scale: 1.05, backgroundColor: "#F59E0B" }}
+                    whileHover={{ scale: 1.05, backgroundColor: "#5A9AA3" }}
                     whileTap={{ scale: 0.95 }}
-                    className="mt-4 bg-[#F59E0B] text-[#1E3A8A] px-6 py-3 rounded-lg font-bold cursor-pointer"
+                    className="mt-4 bg-secondary  px-6 py-3 rounded-lg font-bold cursor-pointer"
                   >
                     Book Now
                   </motion.button>
