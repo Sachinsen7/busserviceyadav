@@ -24,17 +24,18 @@ const TourCard = ({ image, title, description }) => (
     whileInView="visible"
     whileHover="hover"
     viewport={{ once: true }}
-    style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%)" }}
-    className="rounded-lg shadow-md overflow-hidden"
+    className="rounded-lg shadow-md overflow-hidden border-primary border-2 "
   >
     <img src={image} alt={title} className="w-full h-48 object-cover" />
     <div className="p-4">
-      <h3 className="text-lg font-bold text-[#1E3A8A] font-raleway">{title}</h3>
+      <h3 className="text-lg font-bold text-neutralDark font-raleway">
+        {title}
+      </h3>
       <p className="text-[#4B5563] mt-2">{description}</p>
       <motion.a
         href="/book"
         whileHover={{ scale: 1.1 }}
-        className="mt-4 inline-block bg-[#F59E0B] text-[#1E3A8A] px-4 py-2 rounded-lg font-raleway font-semibold"
+        className="mt-4 inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold"
       >
         Explore Now
       </motion.a>

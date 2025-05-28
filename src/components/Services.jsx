@@ -54,20 +54,14 @@ function Services() {
   ];
 
   return (
-    <section
-      style={{
-        background:
-          "linear-gradient(135deg, #F1F5F9 0%, #D1FAE5 50%, #FEF3C7 100%)",
-      }}
-      className="w-full mx-auto py-10 px-4 font-raleway"
-    >
+    <section className="w-full mx-auto py-10 px-4 font-raleway">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-2xl font-bold text-center text-primary-blue mb-6"
+          className="text-3xl font-bold text-center text-primary-blue mb-8"
         >
           Our Services
         </motion.h2>
@@ -81,13 +75,13 @@ function Services() {
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true }}
-              className="bg-white cursor-pointer rounded-lg shadow-md p-6 flex flex-col "
+              className="bg-secondary cursor-pointer rounded-lg shadow-md p-6 flex flex-col "
             >
               <div className="mb-4">{service.icon}</div>
-              <h1 className="text-lg font-bold text-[#1E3A8A] font-raleway">
+              <h1 className="text-lg font-bold text-primary-blue font-raleway">
                 {service.title}
               </h1>
-              <p className="text-[#4B5563] mt-2">{service.description}</p>
+              <p className="text-primary-blue mt-2">{service.description}</p>
             </motion.div>
           ))}
         </div>
