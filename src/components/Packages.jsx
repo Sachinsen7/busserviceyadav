@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { use } from "react";
+import { Link } from "react-router-dom";
+import BookingInquiryForm from "./BookingInquiryForm.jsx";
 
 const packageVariants = {
   hidden: { opacity: 0, x: 100 },
@@ -16,6 +19,19 @@ const packageVariants = {
 };
 
 const Packages = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  // hadle function
+
+  const handleBookNow = () => {
+    setSelectedService({
+      name: "General Booking",
+      type: "general",
+    });
+    setIsModalOpen(true);
+  };
+
   const packages = [
     {
       image:
@@ -74,6 +90,7 @@ const Packages = () => {
                 src={pkg.image}
                 alt={pkg.title}
                 className="w-full h-48 object-cover"
+                loading="lazy"
               />
               <div className="p-4">
                 <h3 className="text-lg font-bold text-primary font-raleway">
@@ -86,18 +103,38 @@ const Packages = () => {
                 <p className="text-neutralDark mt-2">
                   Highlights: {pkg.highlights}
                 </p>
-                <motion.a
-                  href="/book"
-                  whileHover={{ scale: 1.1 }}
-                  className="mt-4 inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold"
-                >
-                  Book Package
-                </motion.a>
+                <div className="flex justify-between mt-4">
+                  <button
+                    onClick={handleBookNow}
+                    className="inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold text-base   transition-transform 
+                    hover:scale-105"
+                    aria-label={`Book ${pkg.title}`}
+                  >
+                    Book Now
+                  </button>
+                  <Link
+                    to={`/tour-details/${encodeURIComponent(pkg.title)}`}
+                    className="inline-block  text-neutralDark hover:underline px-4 py-2 rounded-lg font-semibold text-base hover:text-primary-blue transition-transform 
+                    hover:scale-105"
+                    aria-label={`Explore ${pkg.title}`}
+                  >
+                    Know more..
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {selectedService && (
+        <BookingInquiryForm
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          serviceType="general"
+          serviceName={selectedService.name}
+        />
+      )}
     </section>
   );
 };
