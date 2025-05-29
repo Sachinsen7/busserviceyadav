@@ -5,9 +5,9 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import BusOne from "../assets/BusOne.png";
-import BusTwo from "../assets/BusTwo.png";
-import BusThree from "../assets/BusThree.png";
+// import BusOne from "../assets/BusOne.png";
+// import BusTwo from "../assets/BusTwo.png";
+// import BusThree from "../assets/BusThree.png";
 
 const slideVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 50 },
@@ -28,17 +28,20 @@ const textVariants = {
 const Hero = () => {
   const slides = [
     {
-      image: BusOne,
+      image:
+        "https://plus.unsplash.com/premium_photo-1664302152991-d013ff125f3f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVzfGVufDB8fDB8fHww",
       title: "Travel with Comfort",
       subtitle: "Experience luxury with Yadav Bus Services.",
     },
     {
-      image: BusTwo,
+      image:
+        "https://images.unsplash.com/photo-1632276536839-84cad7fd03b0?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Explore New Routes",
       subtitle: "Daily trips to top destinations.",
     },
     {
-      image: BusThree,
+      image:
+        "https://images.unsplash.com/photo-1570125909517-53cb21c89ff2?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Book Your Journey",
       subtitle: "Fast, easy, and reliable bookings.",
     },
