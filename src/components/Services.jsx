@@ -1,5 +1,7 @@
+// src/components/Services.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ServiceVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -8,14 +10,15 @@ const ServiceVariants = {
     y: 0,
     transition: { duration: 0.6, delay: i * 0.2, ease: "easeOut" },
   }),
-  hover: { scale: 1.1, transition: { duration: 0.3 } },
+  hover: { scale: 1.05, transition: { duration: 0.3 } },
 };
+
 function Services() {
   const services = [
     {
       icon: (
         <svg
-          className="w-12 h-12 text-accent-gold"
+          className="w-12 h-12 text-primary-blue"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -24,11 +27,12 @@ function Services() {
       ),
       title: "Online Booking",
       description: "Book your tickets easily through our secure platform.",
+      link: "/book", // Example link; adjust as needed
     },
     {
       icon: (
         <svg
-          className="w-12 h-12 text-accent-gold"
+          className="w-12 h-12 text-primary-blue"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -37,11 +41,12 @@ function Services() {
       ),
       title: "Luxury Buses",
       description: "Travel in comfort with our modern, air-conditioned fleet.",
+      link: "/bus-service",
     },
     {
       icon: (
         <svg
-          className="w-12 h-12 text-accent-gold"
+          className="w-12 h-12 text-primary-blue"
           fill="currentColor"
           viewBox="0 0 24 24"
         >
@@ -50,39 +55,89 @@ function Services() {
       ),
       title: "Customer Support",
       description: "24/7 support for all your travel needs.",
+      link: "/contact", // Example link; adjust as needed
+    },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-12 h-12 text-primary-blue"
+          fill="currentColor"
+          viewBox="0 0 512 512"
+        >
+          <path d="M192 0c-17.7 0-32 14.3-32 32l0 32 0 .2c-38.6 2.2-72.3 27.3-85.2 64.1L39.6 228.8C16.4 238.4 0 261.3 0 288L0 432l0 48c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-48 320 0 0 48c0 17.7 14.3 32 32 32l32 0c17.7 0 32-14.3 32-32l0-48 0-144c0-26.7-16.4-49.6-39.6-59.2L437.2 128.3c-12.9-36.8-46.6-62-85.2-64.1l0-.2 0-32c0-17.7-14.3-32-32-32L192 0zM165.4 128l181.2 0c13.6 0 25.7 8.6 30.2 21.4L402.9 224l-293.8 0 26.1-74.6c4.5-12.8 16.6-21.4 30.2-21.4zM96 288a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm288 32a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+        </svg>
+      ),
+      title: "Cab Service",
+      description:
+        "We provide a wide range of cab services to meet your needs.",
+      link: "/cab-service",
+    },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-12 h-12 text-primary-blue"
+          fill="currentColor"
+          viewBox="0 0 448 512"
+        >
+          <path d="M224 0C348.8 0 448 35.2 448 80l0 16 0 320c0 17.7-14.3 32-32 32l0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32-192 0 0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32L0 96 0 80C0 35.2 99.2 0 224 0zM64 128l0 128c0 17.7 14.3 32 32 32l256 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32L96 96c-17.7 0-32 14.3-32 32zM80 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+        </svg>
+      ),
+      title: "Bus Service",
+      description:
+        "We provide a wide range of bus services to meet your needs.",
+      link: "/bus-service",
+    },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-12 h-12 text-primary-blue"
+          fill="currentColor"
+          viewBox="0 0 512 512"
+        >
+          <path d="M0 32C0 14.3 14.3 0 32 0L480 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l0 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-176 0 0-48c0-26.5-21.5-48-48-48s-48 21.5-48 48l0 48L32 512c-17.7 0-32-14.3-32-32s14.3-32 32-32L32 64C14.3 64 0 49.7 0 32zm96 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zM240 96c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zM112 192c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM328 384c13.3 0 24.3-10.9 21-23.8c-10.6-41.5-48.2-72.2-93-72.2s-82.5 30.7-93 72.2c-3.3 12.8 7.8 23.8 21 23.8l144 0z" />
+        </svg>
+      ),
+      title: "Hotel Service",
+      description:
+        "We provide a wide range of hotel services to meet your needs.",
+      link: "/hotel-service",
     },
   ];
 
   return (
-    <section className="w-full mx-auto py-10 px-4 font-raleway">
+    <section className="w-full mx-auto py-10 px-4 font-raleway bg-ai-gradient-section">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center text-primary-blue mb-8"
+          className="text-3xl font-extrabold text-center text-primary-blue mb-8"
         >
           Our Services
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              variants={ServiceVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hover"
-              viewport={{ once: true }}
-              className="bg-secondary cursor-pointer rounded-lg shadow-md p-6 flex flex-col "
-            >
-              <div className="mb-4">{service.icon}</div>
-              <h1 className="text-lg font-bold text-primary-blue font-raleway">
-                {service.title}
-              </h1>
-              <p className="text-primary-blue mt-2">{service.description}</p>
-            </motion.div>
+            <Link to={service.link} key={index}>
+              <motion.div
+                custom={index}
+                variants={ServiceVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                viewport={{ once: true }}
+                className="bg-secondary cursor-pointer rounded-lg shadow-md p-6 flex flex-col"
+              >
+                <div className="mb-4">{service.icon}</div>
+                <h1 className="text-lg font-extrabold text-primary-blue font-raleway">
+                  {service.title}
+                </h1>
+                <p className="text-neutralDark mt-2">{service.description}</p>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
