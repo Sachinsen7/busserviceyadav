@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import logoBus from "../assets/logoBus.png";
+import BookingInquiryForm from "./BookingInquiryForm.jsx";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
   // const [darkMode, setDarkMode] = useState();
 
   const toggleMenuBtn = (e) => {
@@ -22,6 +26,14 @@ function Header() {
     initial: { width: "0%" },
     hover: { width: "100%", transition: { duration: 0.3, ease: "easeOut" } },
     active: { width: "100%", transition: { duration: 0.3 } },
+  };
+
+  const handleBookNow = () => {
+    setSelectedService({
+      name: "General Booking",
+      type: "general",
+    });
+    setIsModalOpen(true);
   };
 
   return (
@@ -77,8 +89,11 @@ function Header() {
             </motion.li>
           ))}
         </ul>
-        <button className="bg-secondary text-white px-4 py-2 rounded-lg  transition-colors duration-200 hover:bg-[#5A9AA3] hidden sm:block">
-          <a href="/book">Book Now</a>
+        <button
+          onClick={handleBookNow}
+          className="bg-secondary text-white px-4 py-2 rounded-lg  transition-colors duration-200 hover:bg-[#5A9AA3] hidden sm:block"
+        >
+          Book Now
         </button>
 
         {/* mobile menu */}
@@ -143,6 +158,15 @@ function Header() {
             ))}
           </ul>
         </div>
+
+        {selectedService && (
+          <BookingInquiryForm
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            serviceType="general"
+            serviceName={selectedService.name}
+          />
+        )}
       </nav>
     </header>
   );
