@@ -46,6 +46,9 @@ const ReviewSection = () => {
             className="bg-white rounded-lg shadow-lg p-6 text-center hover:-translate-y-1 transition-transform duration-300"
             variants={cardVariants}
             initial="hidden"
+            style={{
+              background: "linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%)",
+            }}
             whileInView="visible"
             viewport={{ once: true }}
           >
