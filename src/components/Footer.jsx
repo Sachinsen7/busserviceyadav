@@ -90,8 +90,19 @@ const Footer = () => {
 
         <motion.div variants={sectionVariants}>
           <h3 className="text-xl font-bold mb-4 text-[#F59E0B]">Contact Us</h3>
-          <p className="text-white">Email: info@yadavbus.com</p>
-          <p className="text-white">Phone: +91-123-456-7890</p>
+          <p className="text-white">
+            Email: {""}
+            <a className=" hover:underline" href="mailto:W7oCt@example.com">
+              info@yadavbus.com
+            </a>
+          </p>
+          <p className="text-white">
+            Phone: {""}{" "}
+            <a className=" hover:underline" href="tel:123456789">
+              {" "}
+              +91-123-456-7890
+            </a>
+          </p>
           <p className="text-white">Address: 123 Bus Lane, Jaipur, Rajasthan</p>
         </motion.div>
 
