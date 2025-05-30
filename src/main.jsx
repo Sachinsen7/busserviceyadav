@@ -8,8 +8,7 @@ import "./index.css";
 import Packages from "./components/Packages.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Services from "./components/Services.jsx";
-import TourCard from "./components/tourCard.jsx";
-import BookingForm from "./components/BookingForm.jsx";
+
 import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
 import Layout from "./Layout.jsx";
@@ -20,6 +19,8 @@ import CabService from "./Pages/CabService.jsx";
 import BusService from "./Pages/BusService.jsx";
 import HotelService from "./Pages/HotelService.jsx";
 import BookingInquiryForm from "./components/BookingInquiryForm.jsx";
+import DestinationDetails from "./Pages/DestinationDetail.jsx";
+import ContactFloatingToggle from "./components/ContactFloatingToggle.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -37,11 +38,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/bus-service" element={<BusService />} />
           <Route path="/hotel-service" element={<HotelService />} />
           <Route path="/hotel-service" element={<BookingInquiryForm />} />
+          <Route path="/destination/:title" element={<DestinationDetails />} />
 
           <Route path="/tour-details/:packageTitle" element={<TourDetails />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+
+      <ContactFloatingToggle />
     </BrowserRouter>
   </StrictMode>
 );
