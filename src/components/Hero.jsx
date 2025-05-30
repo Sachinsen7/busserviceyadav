@@ -1,13 +1,11 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import BusOne from "../assets/BusOne.png";
-// import BusTwo from "../assets/BusTwo.png";
-// import BusThree from "../assets/BusThree.png";
+import BookingInquiryForm from "./BookingInquiryForm.jsx";
+import { useState } from "react";
 
 const slideVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 50 },
@@ -26,6 +24,8 @@ const textVariants = {
 };
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   const slides = [
     {
       image:
@@ -46,6 +46,14 @@ const Hero = () => {
       subtitle: "Fast, easy, and reliable bookings.",
     },
   ];
+
+  const handleBookNow = () => {
+    setSelectedService({
+      name: "General Booking",
+      type: "general",
+    });
+    setIsModalOpen(true);
+  };
 
   return (
     <section className="relative h-[800px]  font-raleway">
@@ -81,6 +89,7 @@ const Hero = () => {
                     {slide.subtitle}
                   </p>
                   <motion.button
+                    onClick={handleBookNow}
                     whileHover={{ scale: 1.05, backgroundColor: "#5A9AA3" }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-4 bg-secondary  px-6 py-3 rounded-lg font-bold cursor-pointer"
@@ -93,6 +102,15 @@ const Hero = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {selectedService && (
+        <BookingInquiryForm
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          serviceType="general"
+          serviceName={selectedService.name}
+        />
+      )}
     </section>
   );
 };
