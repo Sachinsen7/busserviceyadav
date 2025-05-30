@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ContactFloatingToggle from "./ContactFloatingToggle";
 
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.8 },
