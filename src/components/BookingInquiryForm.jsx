@@ -7,10 +7,6 @@ const modalVariants = {
   exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
 };
 
-const buttonVariants = {
-  hover: { scale: 1.1, transition: { duration: 0.3 } },
-};
-
 const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
   const [formData, setFormData] = useState({
     startDate: "",
@@ -36,7 +32,6 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
     e.preventDefault();
     setSubmitMessage("");
 
-    // Validate required fields
     if (!formData.startDate || !formData.numPeople || !formData.userPhone) {
       setSubmitMessage(
         "Please fill in all required fields (Start Date, Number of People, Phone Number)."
@@ -50,7 +45,6 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
 
     setIsSubmitting(true);
 
-    // Prepare the inquiry data
     const inquiryData = {
       serviceType,
       serviceName,
@@ -64,7 +58,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/send-inquiry", {
+      const response = await fetch("http://localhost:5001/api/send-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inquiryData),
@@ -77,7 +71,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
         );
         setTimeout(() => {
           onClose();
-        }, 2000); // close modal after 2 seconds
+        }, 2000);
       } else {
         setSubmitMessage("Failed to send inquiry. Please try again.");
       }
@@ -88,24 +82,25 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
       setIsSubmitting(false);
     }
   };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 bg-white text-neutralDark bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black text-neutralDark bg-opacity-50 flex items-center justify-center z-50">
           <motion.div
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-4 "
+            className="bg-white  p-6 rounded-lg shadow-md w-full max-w-md mx-4 font-raleway"
           >
-            <h2 className="text-2xl font-extrabold text-primary-blue mb-4">
+            <h2 className="text-2xl font-extrabold text-neutralDark mb-4">
               Booking Inquiry for {serviceName}
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
-                  className="block text-neutralDark font-bold mb-1"
+                  className="block text-neutral-gray font-bold mb-1"
                   htmlFor="startDate"
                 >
                   Start Date <span className="text-red-500">*</span>
@@ -142,7 +137,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
               </div>
               <div>
                 <label
-                  className="block text-neutralDark font-bold mb-1"
+                  className="block text-neutral-gray font-bold mb-1"
                   htmlFor="numPeople"
                 >
                   Number of People <span className="text-red-500">*</span>
@@ -172,14 +167,14 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   name="userPhone"
                   value={formData.userPhone}
                   onChange={handleChange}
-                  className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-gold"
+                  className="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   required
                   placeholder="+919876543210"
                 />
               </div>
               <div>
                 <label
-                  className="block text-neutralDark font-bold mb-1"
+                  className="block text-neutral-gray font-bold mb-1"
                   htmlFor="notes"
                 >
                   Additional Notes (Optional)
@@ -193,7 +188,6 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   rows="3"
                 />
               </div>
-
               <div>
                 <label className="flex items-center text-neutral-gray">
                   <input
@@ -207,8 +201,6 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   I consent to receive messages via WhatsApp.
                 </label>
               </div>
-
-              {/* submit */}
               {submitMessage && (
                 <p
                   className={`text-center ${
@@ -224,22 +216,18 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                 <button
                   type="button"
                   onClick={onClose}
+                  className="bg-gray-300 text-neutral-gray px-4 py-2 rounded-lg font-semibold  transition-colors"
                   disabled={isSubmitting}
-                  className="bg-gray-300 text-neutralDark px-4 py-2 rounded-lg font-extrabold hover:bg-gray-400 transition-colors"
                 >
                   Cancel
                 </button>
-                <motion.button
-                  variants={buttonVariants}
-                  disabled={isSubmitting}
+                <button
                   type="submit"
-                  className="bg-accent text-primary-blue px-4 py-2 rounded-lg font-semibold   transition-colors
-
-                  
-                  "
+                  className="bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold transition-colors"
+                  disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Inquiry"}
-                </motion.button>
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                </button>
               </div>
             </form>
           </motion.div>
