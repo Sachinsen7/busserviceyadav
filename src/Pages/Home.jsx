@@ -10,6 +10,7 @@ import Services from "../components/Services.jsx";
 import Packages from "../components/Packages.jsx";
 import About from "../components/About.jsx";
 import Contact from "../components/Contact.jsx";
+import ReviewSection from "../components/ReviewSection.jsx";
 
 const headingVariants = {
   hidden: { opacity: 0, x: -50 },
@@ -92,6 +93,8 @@ const Home = () => {
         <Services />
         <Packages />
         <BookingForm />
+        <div className="border-b border-neutralDark border-2"></div>
+        <ReviewSection />
         <div className="border-b border-neutralDark border-2"></div>
         <About />
         <div className="border-b border-neutralDark border-2"></div>
