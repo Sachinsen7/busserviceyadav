@@ -128,7 +128,7 @@ function Header() {
           </button>
 
           <ul
-            className={`absolute top-16 right-0 w-48 p-4 rounded-lg shadow-lg flex flex-col gap-3 z-50 transition-all duration-300 ease-out bg-[#1E3A8A] ${
+            className={`absolute top-16 right-0 w-48 p-4 rounded-lg shadow-lg flex flex-col gap-6 z-50 transition-all duration-300 ease-out bg-neutralDark ${
               isMenuOpen
                 ? "translate-y-0 opacity-100"
                 : "-translate-y-full opacity-0 pointer-events-none"
