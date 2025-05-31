@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import Hero from "../components/Hero.jsx";
-import TourCard from "../components/tourCard.jsx";
+import TourCard from "../components/TourCard.jsx";
 import BookingForm from "../components/BookingForm.jsx";
 import Gallery from "../components/Gallery.jsx";
 import Services from "../components/Services.jsx";
