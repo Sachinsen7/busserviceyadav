@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 100, rotate: -5 },
@@ -17,30 +18,28 @@ const cardVariants = {
   },
 };
 
-const TourCard = ({ image, title, description }) => (
-  <motion.div
-    variants={cardVariants}
-    initial="hidden"
-    whileInView="visible"
-    whileHover="hover"
-    viewport={{ once: true }}
-    className="rounded-lg shadow-md overflow-hidden border-primary border-2 "
-  >
-    <img src={image} alt={title} className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-lg font-bold text-neutralDark font-raleway">
-        {title}
-      </h3>
-      <p className="text-[#4B5563] mt-2">{description}</p>
-      <motion.a
-        href="/book"
-        whileHover={{ scale: 1.1 }}
-        className="mt-4 inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold"
-      >
-        Explore Now
-      </motion.a>
-    </div>
-  </motion.div>
-);
+const TourCard = ({ image, title, description }) => {
+  return (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true }}
+      className="rounded-lg shadow-md overflow-hidden border-primary border-2"
+    >
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-neutralDark ">{title}</h3>
+        <p className="text-[#4B5563] mt-2">{description}</p>
+        <Link to={`/destination/${title}`}>
+          <button className="mt-4 bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold hover:bg-teal transition-colors">
+            Explore Now
+          </button>
+        </Link>
+      </div>
+    </motion.div>
+  );
+};
 
 export default TourCard;
