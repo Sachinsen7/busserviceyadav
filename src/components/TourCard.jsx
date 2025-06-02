@@ -33,7 +33,7 @@ const TourCard = ({ image, title, description }) => {
         <h3 className="text-lg font-bold text-neutralDark ">{title}</h3>
         <p className="text-[#4B5563] mt-2">{description}</p>
         <Link to={`/destination/${title}`}>
-          <button className="mt-4 bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold hover:bg-teal transition-colors">
+          <button className="mt-4 bg-accent text-neutralDark px-4 py-2 rounded-lg font-raleway font-semibold hover:bg-teal  transition-transform hover:scale-105">
             Explore Now
           </button>
         </Link>
