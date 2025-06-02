@@ -55,23 +55,7 @@ const ContactFloatingToggle = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-          >
-            {/* instagram */}
-
-            <motion.a
-              href={socialLinks.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={iconVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              custom={0}
-              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-accent transition-colors"
-              whileHover={{ scale: 1.1 }}
             >
-              <FaInstagram size={20} />
-            </motion.a>
 
             {/* whatsapp     */}
 
@@ -84,11 +68,29 @@ const ContactFloatingToggle = () => {
               animate="visible"
               exit="exit"
               custom={1}
-              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-accent transition-colors"
+              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-secondary transition-colors"
               whileHover={{ scale: 1.1 }}
             >
               <FaWhatsapp size={20} />
             </motion.a>
+            {/* instagram */}
+
+            <motion.a
+              href={socialLinks.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={iconVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              custom={0}
+              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-secondary transition-colors"
+              whileHover={{ scale: 1.1 }}
+            >
+              <FaInstagram size={20} />
+            </motion.a>
+
+            
 
             {/* Email */}
             <motion.a
@@ -98,7 +100,7 @@ const ContactFloatingToggle = () => {
               animate="visible"
               exit="exit"
               custom={2}
-              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-accent  transition-colors"
+              className="bg-white text-teal p-3 rounded-full shadow-md hover:bg-orange hover:text-secondary transition-colors"
               whileHover={{ scale: 1.1 }}
             >
               <FaEnvelope size={20} />
