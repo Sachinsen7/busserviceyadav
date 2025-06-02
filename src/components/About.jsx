@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import BookingInquiryForm from "./BookingInquiryForm.jsx";
-
 import BusOne from "../assets/BusOne.png";
 
+// Animation variants for section and cards
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -20,9 +20,11 @@ const cardVariants = {
 };
 
 const About = () => {
+  // State for modal visibility and selected service
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
+  // Handle "Book Now" button click
   const handleBookNow = () => {
     setSelectedService({
       name: "General Booking",
@@ -34,6 +36,7 @@ const About = () => {
   return (
     <div className="min-h-screen flex flex-col font-raleway bg-white mt-9">
       <main className="flex-grow">
+        {/* Hero Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -51,7 +54,7 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Company History */}
+        {/* Company History Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -87,6 +90,7 @@ const About = () => {
           </div>
         </motion.section>
 
+        {/* Team Section */}
         <section className="max-w-7xl mx-auto">
           <motion.section
             initial="hidden"
@@ -99,6 +103,7 @@ const About = () => {
               Meet Our Team
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Render each team member card */}
               {[
                 {
                   name: "Amit Yadav",
@@ -143,7 +148,7 @@ const About = () => {
             </div>
           </motion.section>
 
-          {/* CTA Section */}
+          {/* Call-to-Action Section */}
           <motion.section
             initial="hidden"
             whileInView="visible"
@@ -169,6 +174,7 @@ const About = () => {
           </motion.section>
         </section>
       </main>
+      {/* Booking inquiry modal */}
       {selectedService && (
         <BookingInquiryForm
           isOpen={isModalOpen}
