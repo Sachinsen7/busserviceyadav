@@ -43,7 +43,8 @@ const FeaturedDestinations = () => {
               </h3>
               <p className="text-white mb-4">{dest.description}</p>
               <Link to={`/destination/${dest.title}`}>
-                <button className="bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold hover:bg-teal transition-colors">
+                <button className="bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold hover:bg-teal  transition-transform 
+                    hover:scale-105">
                   Explore Now
                 </button>
               </Link>
