@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 
 import ReactDOM from "react-dom/client";
 import Home from "./Pages/Home.jsx";
@@ -8,7 +8,6 @@ import "./index.css";
 import Packages from "./components/Packages.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Services from "./components/Services.jsx";
-
 import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
 import Layout from "./Layout.jsx";
@@ -27,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/" element={<Navigate to={"/home"} />}></Route>
           <Route path="/home" element={<Home />} />
           <Route path="/package" element={<Packages />} />
           <Route path="/service" element={<Services />} />
@@ -39,7 +39,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/hotel-service" element={<HotelService />} />
           <Route path="/hotel-service" element={<BookingInquiryForm />} />
           <Route path="/destination/:title" element={<DestinationDetails />} />
-
           <Route path="/tour-details/:packageTitle" element={<TourDetails />} />
           <Route path="*" element={<NotFound />} />
         </Route>
