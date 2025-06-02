@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import BookingInquiryForm from "../components/BookingInquiryForm";
 
+// Animation variants for card and container
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -15,16 +16,17 @@ const containerVariants = {
 };
 
 const CabService = () => {
+  // State for modal visibility and selected cab service
   const [isModelOpen, setIsModelOpen] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState(null);
 
-  //handle function book now
-
+  // Handle "Book Now" button click
   const handleBookNow = (vehicle) => {
     setSelectedService(vehicle);
     setIsModelOpen(true);
   };
 
+  // List of available cab vehicles
   const vehicles = [
     {
       name: "Toyota Innova",
@@ -65,6 +67,7 @@ const CabService = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
+      {/* Page heading */}
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -74,12 +77,14 @@ const CabService = () => {
         Cab Service - Choose Your Ride
       </motion.h1>
 
+      {/* Cab cards grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
+        {/* Render each cab card */}
         {vehicles.map((vehicle, index) => (
           <motion.div
             key={index}
@@ -102,6 +107,7 @@ const CabService = () => {
             <p className="text-neutral-gray font-bold mb-4">
               <strong>Price:</strong> {vehicle.pricePerKm}
             </p>
+            {/* Book Now button */}
             <motion.div whileHover={{ scale: 1.1 }} className="text-center">
               <button
                 to="/book"
@@ -116,6 +122,7 @@ const CabService = () => {
         ))}
       </motion.div>
 
+      {/* Back to Home button */}
       <div className="text-center mt-8">
         <motion.div
           whileHover={{ scale: 1.1 }}
@@ -127,6 +134,7 @@ const CabService = () => {
         </motion.div>
       </div>
 
+      {/* Booking inquiry modal */}
       {selectedService && (
         <BookingInquiryForm
           isOpen={isModelOpen}
