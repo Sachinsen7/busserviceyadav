@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const BookingForm = () => (
   <motion.section
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.6 }}
-    className="w-full mx-auto py-10 px-4  "
+    className="w-full mx-auto py-10 px-4"
   >
     <h2 className="text-2xl font-bold text-center text-[#1E3A8A] mb-6 ">
       Book Your Ticket
@@ -19,7 +20,7 @@ const BookingForm = () => (
       <input
         type="text"
         placeholder="To"
-        className="w-full p-2 border border-[#4B5563] rounded text-[#4B5563]"
+        className="w-full p-2 border border-[#4B5563] rounded text-[#4B5563]" 
       />
       <input
         type="date"
@@ -31,7 +32,7 @@ const BookingForm = () => (
         type="submit"
         className="w-full bg-accent text-white p-2 rounded  cursor-pointer font-semibold"
       >
-        Search Buses
+       <Link to={"/bus-service"}>Search Buses</Link>
       </motion.button>
     </form>
   </motion.section>
