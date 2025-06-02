@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { use } from "react";
 import { Link } from "react-router-dom";
 import BookingInquiryForm from "./BookingInquiryForm.jsx";
 
@@ -22,8 +21,7 @@ const Packages = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
-  // hadle function
-
+  // Handle "Book Now" button click
   const handleBookNow = () => {
     setSelectedService({
       name: "General Booking",
@@ -106,7 +104,7 @@ const Packages = () => {
                 <div className="flex justify-between mt-4">
                   <button
                     onClick={handleBookNow}
-                    className="inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold text-base   transition-transform 
+                    className="inline-block bg-accent text-neutralDark px-4 py-2 rounded-lg font-semibold text-base transition-transform 
                     hover:scale-105"
                     aria-label={`Book ${pkg.title}`}
                   >
