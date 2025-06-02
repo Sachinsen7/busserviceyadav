@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
+// Animation variants for gallery images and overlays
 const imageVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
@@ -21,6 +22,7 @@ const modalVariants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
 };
 
+// Gallery images array
 const images = [
   {
     src: "https://plus.unsplash.com/premium_photo-1664302152991-d013ff125f3f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -48,15 +50,19 @@ const images = [
   },
 ];
 
+// Main Gallery component
 const GallerySection = () => {
+  // State for overlay modal and selected image
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
+  // Open overlay with selected image
   const openOverlay = (index) => {
     setSelectedImageIndex(index);
     setIsOverlayOpen(true);
   };
 
+  // Close overlay
   const closeOverlay = () => {
     setIsOverlayOpen(false);
     setSelectedImageIndex(null);
@@ -65,6 +71,7 @@ const GallerySection = () => {
   return (
     <section className="mx-auto py-12 px-4 font-raleway bg-ai-gradient-section">
       <div className="max-w-7xl mx-auto px-4">
+        {/* Gallery heading */}
         <motion.h2
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -74,6 +81,7 @@ const GallerySection = () => {
         >
           Our Travel Gallery
         </motion.h2>
+        {/* Gallery grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {images.map((image, index) => (
             <motion.div
@@ -94,6 +102,7 @@ const GallerySection = () => {
                 className="w-full h-64 object-cover will-change-transform"
                 loading="lazy"
               />
+              {/* Overlay on hover */}
               <motion.div
                 initial="hidden"
                 variants={overlayVariants}
@@ -109,7 +118,7 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {/* Overlay Section */}
+      {/* Overlay Section for enlarged gallery */}
       {isOverlayOpen && (
         <motion.div
           variants={modalVariants}
