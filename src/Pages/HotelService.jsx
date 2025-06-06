@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import BookingInquiryForm from "../components/BookingInquiryForm.jsx";
 import { useState } from "react";
 
+// Animation variants for hotel cards and container
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -16,13 +17,17 @@ const containerVariants = {
 };
 
 const HotelService = () => {
+  // State for modal visibility and selected hotel
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
+  // Handle "Book Now" button click
   const handleBookNow = (hotel) => {
     setSelectedService(hotel);
     setIsModalOpen(true);
   };
+
+  // List of available hotels
   const hotels = [
     {
       name: "Standard Hotel",
@@ -49,6 +54,7 @@ const HotelService = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 font-raleway ">
+      {/* Page heading */}
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,12 +64,14 @@ const HotelService = () => {
         Hotel Service - Choose Your Stay
       </motion.h1>
 
+      {/* Hotel cards grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
+        {/* Render each hotel card */}
         {hotels.map((hotel, index) => (
           <motion.div
             key={index}
@@ -86,6 +94,7 @@ const HotelService = () => {
             <p className="text-neutral-gray font-bold mb-4">
               <strong>Price:</strong> {hotel.pricePerNight}
             </p>
+            {/* Book Now button */}
             <motion.div whileHover={{ scale: 1.1 }} className="text-center">
               <button
                 onClick={() => handleBookNow(hotel)}
@@ -99,6 +108,7 @@ const HotelService = () => {
         ))}
       </motion.div>
 
+      {/* Back to Home button */}
       <div className="text-center mt-8">
         <motion.div
           whileHover={{ scale: 1.1 }}
@@ -110,6 +120,7 @@ const HotelService = () => {
         </motion.div>
       </div>
 
+      {/* Booking inquiry modal */}
       {selectedService && (
         <BookingInquiryForm
           isOpen={isModalOpen}

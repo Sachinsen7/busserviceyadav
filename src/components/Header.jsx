@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 import logoBus from "../assets/logoBus.png";
 import BookingInquiryForm from "./BookingInquiryForm.jsx";
 
+// Header component with navigation and booking modal
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
-  // const [darkMode, setDarkMode] = useState();
-
+  // Toggle mobile menu
   const toggleMenuBtn = (e) => {
     e.stopPropagation();
-    console.log("Toggle clicked");
     setIsMenuOpen((prev) => !prev);
   };
 
+  // Animation variants for nav links and underline
   const linkVariants = {
     initial: { scale: 1 },
     hover: { scale: 1.1, transition: { duration: 0.3, ease: "easeOut" } },
@@ -28,6 +28,7 @@ function Header() {
     active: { width: "100%", transition: { duration: 0.3 } },
   };
 
+  // Handle "Book Now" button click
   const handleBookNow = () => {
     setSelectedService({
       name: "General Booking",
@@ -39,15 +40,16 @@ function Header() {
   return (
     <header className="bg-neutralDark text-white sm:p-7 JosefinSans">
       <nav className="container mx-auto flex justify-between">
+        {/* Logo and site name */}
         <h1 className="sm:text-xl text-sm ">
           <a className="hidden sm:block" href="/home">
             Yadav Bus Service
           </a>
           <a href="/home" className="cursor-pointer">
-            {" "}
             <img src={logoBus} alt="" className="w-32 h-28 sm:hidden" />
           </a>
         </h1>
+        {/* Desktop navigation links */}
         <ul className="space-x-4  hidden sm:flex text-lg font-raleway">
           {[
             { to: "/home", label: "Home" },
@@ -89,6 +91,7 @@ function Header() {
             </motion.li>
           ))}
         </ul>
+        {/* Desktop Book Now button */}
         <button
           onClick={handleBookNow}
           className="bg-secondary text-white px-4 py-2 rounded-lg  transition-colors duration-200 hover:bg-[#5A9AA3] hidden sm:block"
@@ -96,8 +99,7 @@ function Header() {
           Book Now
         </button>
 
-        {/* mobile menu */}
-
+        {/* Mobile menu toggle and menu */}
         <div className="relative w-full flex items-center justify-end sm:hidden">
           <button
             onClick={toggleMenuBtn}
@@ -127,6 +129,7 @@ function Header() {
             )}
           </button>
 
+          {/* Mobile navigation links */}
           <ul
             className={`absolute top-16 right-0 w-48 p-4 rounded-lg shadow-lg flex flex-col gap-6 z-50 transition-all duration-300 ease-out bg-neutralDark ${
               isMenuOpen
@@ -159,6 +162,7 @@ function Header() {
           </ul>
         </div>
 
+        {/* Booking Inquiry Modal */}
         {selectedService && (
           <BookingInquiryForm
             isOpen={isModalOpen}

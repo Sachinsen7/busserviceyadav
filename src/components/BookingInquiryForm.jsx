@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ContactFloatingToggle from "./ContactFloatingToggle";
 
+// Animation variants for the modal
 const modalVariants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
   exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
 };
 
+// BookingInquiryForm component for booking inquiries
 const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
+  // State for form data
   const [formData, setFormData] = useState({
     startDate: "",
     endDate: "",
@@ -18,9 +21,11 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
     consent: false,
   });
 
+  // State for submission status and message
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -29,10 +34,12 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitMessage("");
 
+    // Basic validation
     if (!formData.startDate || !formData.numPeople || !formData.userPhone) {
       setSubmitMessage(
         "Please fill in all required fields (Start Date, Number of People, Phone Number)."
@@ -46,6 +53,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
 
     setIsSubmitting(true);
 
+    // Prepare inquiry data
     const inquiryData = {
       serviceType,
       serviceName,
@@ -59,6 +67,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
     };
 
     try {
+      // Send inquiry to backend API
       const response = await fetch("http://localhost:5001/api/send-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -95,10 +104,13 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
             exit="exit"
             className="bg-white  p-6 rounded-lg shadow-md w-full max-w-md mx-4 font-raleway"
           >
+            {/* Modal heading */}
             <h2 className="text-2xl font-extrabold text-neutralDark mb-4">
               Booking Inquiry for {serviceName}
             </h2>
+            {/* Inquiry form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Start Date */}
               <div>
                 <label
                   className="block text-neutral-gray font-bold mb-1"
@@ -117,6 +129,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   min={new Date().toISOString().split("T")[0]}
                 />
               </div>
+              {/* End Date */}
               <div>
                 <label
                   className="block text-neutral-gray font-bold mb-1"
@@ -136,6 +149,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   }
                 />
               </div>
+              {/* Number of People */}
               <div>
                 <label
                   className="block text-neutral-gray font-bold mb-1"
@@ -154,6 +168,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   min="1"
                 />
               </div>
+              {/* Phone Number */}
               <div>
                 <label
                   className="block text-neutral-gray font-bold mb-1"
@@ -173,6 +188,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   placeholder="+919876543210"
                 />
               </div>
+              {/* Additional Notes */}
               <div>
                 <label
                   className="block text-neutral-gray font-bold mb-1"
@@ -189,6 +205,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   rows="3"
                 />
               </div>
+              {/* Consent Checkbox */}
               <div>
                 <label className="flex items-center text-neutral-gray">
                   <input
@@ -202,6 +219,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   I consent to receive messages via WhatsApp.
                 </label>
               </div>
+              {/* Submission message */}
               {submitMessage && (
                 <p
                   className={`text-center ${
@@ -213,6 +231,7 @@ const BookingInquiryForm = ({ isOpen, onClose, serviceType, serviceName }) => {
                   {submitMessage}
                 </p>
               )}
+              {/* Action buttons */}
               <div className="flex justify-end space-x-4">
                 <button
                   type="button"

@@ -3,16 +3,19 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { destinations } from "../data/destinations.js";
 
+// Animation variants for featured destination cards
 const cardVariants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 const FeaturedDestinations = () => {
+  // Select the first 3 destinations as featured
   const featured = destinations.slice(0, 3);
 
   return (
     <section className="container mx-auto py-10 px-4 bg-lightGray">
+      {/* Section heading */}
       <motion.h2
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -22,6 +25,7 @@ const FeaturedDestinations = () => {
       >
         Featured Destinations
       </motion.h2>
+      {/* Featured destinations grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featured.map((dest, index) => (
           <motion.div
@@ -32,11 +36,13 @@ const FeaturedDestinations = () => {
             viewport={{ once: true }}
             className="relative h-80 rounded-lg overflow-hidden shadow-lg"
           >
+            {/* Destination image */}
             <img
               src={dest.image}
               alt={dest.title}
               className="w-full h-full object-cover"
             />
+            {/* Overlay with title, description, and button */}
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4">
               <h3 className="text-2xl font-semibold text-white mb-2">
                 {dest.title}

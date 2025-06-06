@@ -3,19 +3,25 @@ import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import { destinations } from "../data/destinations.js";
 
+// Animation variants for page transitions
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+// Animation variants for the back button
 const buttonVariants = {
   hover: { scale: 1.1, transition: { duration: 0.3 } },
 };
 
 const DestinationDetails = () => {
+  // Get the destination title from the URL params
   const { title } = useParams();
+
+  // Find the destination object by title
   const destination = destinations.find((dest) => dest.title === title);
 
+  // If destination is not found, show a not found message
   if (!destination) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-lightGray">
@@ -31,6 +37,7 @@ const DestinationDetails = () => {
       animate="animate"
       className="min-h-screen bg-lightGray font-raleway"
     >
+      {/* Hero image section with overlay and title */}
       <section className="relative h-96">
         <img
           src={destination.image}
@@ -54,6 +61,7 @@ const DestinationDetails = () => {
       <section className="container mx-auto py-12 px-4">
         <h2 className="text-3xl font-bold text-teal mb-6">Top Attractions</h2>
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* List each attraction */}
           {destination.details.attractions.map((attraction, index) => (
             <li
               key={index}
@@ -69,6 +77,7 @@ const DestinationDetails = () => {
       <section className="container mx-auto py-12 px-4">
         <h2 className="text-3xl font-bold text-teal mb-6">Gallery</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Render each gallery image */}
           {destination.details.imageGallery.map((image, index) => (
             <img
               key={index}

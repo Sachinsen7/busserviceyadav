@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-
 import {
   FaInstagram,
   FaWhatsapp,
@@ -10,9 +9,11 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 
+// Floating contact toggle button with social links
 const ContactFloatingToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Animation variants for the icons
   const iconVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -27,10 +28,12 @@ const ContactFloatingToggle = () => {
     }),
   };
 
+  // Toggle the floating menu open/close
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
+  // Social media/contact links
   const socialLinks = {
     instagram: "https://instagram.com/yadavbusservices",
     whatsapp: "https://wa.me/917879973266", // Replace with your WhatsApp number
@@ -39,6 +42,7 @@ const ContactFloatingToggle = () => {
 
   return (
     <div className="fixed bottom-8 right-8 z-50">
+      {/* Floating toggle button */}
       <motion.button
         onClick={handleToggle}
         className="bg-secondary text-white p-4 rounded-full shadow-lg hover:bg-orange transition-colors"
@@ -48,6 +52,7 @@ const ContactFloatingToggle = () => {
         <FaCommentDots size={24} />
       </motion.button>
 
+      {/* Animated social/contact icons */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -55,10 +60,8 @@ const ContactFloatingToggle = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            >
-
-            {/* whatsapp     */}
-
+          >
+            {/* WhatsApp */}
             <motion.a
               href={socialLinks.whatsapp}
               target="_blank"
@@ -73,8 +76,7 @@ const ContactFloatingToggle = () => {
             >
               <FaWhatsapp size={20} />
             </motion.a>
-            {/* instagram */}
-
+            {/* Instagram */}
             <motion.a
               href={socialLinks.instagram}
               target="_blank"
@@ -89,9 +91,6 @@ const ContactFloatingToggle = () => {
             >
               <FaInstagram size={20} />
             </motion.a>
-
-            
-
             {/* Email */}
             <motion.a
               href={socialLinks.email}

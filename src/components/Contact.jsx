@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import BookingInquiryForm from "./BookingInquiryForm";
 
+// Animation variants for section and input fields
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -12,9 +13,11 @@ const inputVariants = {
 };
 
 const Contact = () => {
+  // State for modal visibility and selected service
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
+  // Handle "Book Now" button click
   const handleBookNow = () => {
     setSelectedService({
       name: "General Booking",
@@ -26,6 +29,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col font-raleway bg-white">
       <main className="flex-grow">
+        {/* Hero Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -43,6 +47,7 @@ const Contact = () => {
           </div>
         </motion.section>
 
+        {/* Contact Form and Details Section */}
         <section className="max-w-7xl gap-4 mx-auto py-10 px-4">
           <motion.section
             initial="hidden"
@@ -52,6 +57,7 @@ const Contact = () => {
             className="w-full mx-auto py-10 px-4 "
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Contact Form */}
               <div>
                 <h2 className="text-2xl font-bold text-neutralDark mb-6">
                   Send Us a Message
@@ -136,6 +142,7 @@ const Contact = () => {
             </div>
           </motion.section>
 
+          {/* Call-to-Action Section */}
           <motion.section
             initial="hidden"
             whileInView="visible"
@@ -160,6 +167,7 @@ const Contact = () => {
           </motion.section>
         </section>
       </main>
+      {/* Booking inquiry modal */}
       {selectedService && (
         <BookingInquiryForm
           isOpen={isModalOpen}

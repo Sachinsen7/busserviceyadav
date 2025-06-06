@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import BookingInquiryForm from "./BookingInquiryForm.jsx";
 
+// Animation variants for different sections and elements
 const headingVariants = {
   hidden: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
@@ -49,6 +50,7 @@ const buttonVariants = {
   hover: { scale: 1.1, transition: { duration: 0.3 } },
 };
 
+// Static tour info for sidebar
 const tourInfo = [
   {
     Duration: "2 Days / 3 Nights",
@@ -59,6 +61,7 @@ const tourInfo = [
   },
 ];
 
+// Main tour data for all packages and durations
 const tourData = {
   "Jaipur City Tour": {
     "2 Days": {
@@ -403,13 +406,16 @@ const tourData = {
 };
 
 const TourDetails = () => {
+  // State for modal and selected tour duration
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
+
+  // Get package title from URL params
   const { packageTitle } = useParams();
+  // Get tour details for the selected package
   const tourDetails = tourData[packageTitle] || {};
 
-  // hadle function
-
+  // Handle "Book This Tour" button click
   const handleBookNow = (duration) => {
     setSelectedTour({ duration });
     setIsModalOpen(true);
@@ -422,6 +428,7 @@ const TourDetails = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen py-10 px-4  bg-white"
     >
+      {/* Page Heading */}
       <motion.h1
         variants={headingVariants}
         initial="hidden"
@@ -432,7 +439,7 @@ const TourDetails = () => {
       </motion.h1>
       <div className="max-w-7xl mx-auto px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* sidebar */}
+          {/* Sidebar with tour info */}
           <motion.div
             variants={sidebarVariants}
             initial="hidden"
@@ -459,7 +466,7 @@ const TourDetails = () => {
               </div>
             ))}
           </motion.div>
-          {/* main content */}
+          {/* Main content: Tour durations and agendas */}
           <motion.div
             variants={cardContainerVariants}
             initial="hidden"
@@ -467,6 +474,7 @@ const TourDetails = () => {
             viewport={{ once: true }}
             className="md:col-span-3 space-y-6"
           >
+            {/* Render each duration card */}
             {["2 Days", "3 Days", "5 Days"].map((duration) => (
               <motion.div
                 key={duration}
@@ -474,19 +482,23 @@ const TourDetails = () => {
                 whileHover="hover"
                 className="bg-white p-6 rounded-lg shadow-md"
               >
+                {/* Duration heading */}
                 <h2 className="text-2xl font-extrabold text-primary-blue mb-4">
                   {duration} Tour
                 </h2>
+                {/* Duration image */}
                 <img
                   src={tourDetails[duration]?.image}
                   alt={`${packageTitle} ${duration} tour`}
                   className="w-full h-48 object-cover rounded-lg mb-4"
                   loading="lazy"
                 />
+                {/* Price info */}
                 <p className="text-neutral-gray text-base font-bold mb-4">
                   <strong>Price:</strong>{" "}
                   {tourDetails[duration]?.price || "N/A"}
                 </p>
+                {/* Agenda section */}
                 <h3 className="text-xl font-extrabold text-primary-blue mb-2">
                   Agenda
                 </h3>
@@ -499,9 +511,11 @@ const TourDetails = () => {
                       whileInView="visible"
                       viewport={{ once: true }}
                     >
+                      {/* Place name */}
                       <h4 className="text-lg font-extrabold text-neutralDark mb-2">
                         {item.place}
                       </h4>
+                      {/* Place images */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         {item.images.map((img, imgIndex) => (
                           <motion.img
@@ -520,6 +534,7 @@ const TourDetails = () => {
                     </motion.div>
                   ))}
                 </div>
+                {/* Book this tour button */}
                 <div className="mt-6">
                   <button
                     onClick={() => handleBookNow(duration)}
@@ -534,6 +549,7 @@ const TourDetails = () => {
           </motion.div>
         </div>
       </div>
+      {/* Back to Home button */}
       <div className="text-center mt-8">
         <motion.div variants={buttonVariants} whileHover="hover">
           <Link
@@ -545,7 +561,7 @@ const TourDetails = () => {
           </Link>
         </motion.div>
       </div>
-
+      {/* Booking Inquiry Modal */}
       {selectedTour && (
         <BookingInquiryForm
           isOpen={isModalOpen}

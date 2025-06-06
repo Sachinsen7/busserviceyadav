@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+// Animation variants for sections and icons
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -11,6 +12,7 @@ const iconVariants = {
   hover: { scale: 1.2, rotate: 5, transition: { duration: 0.3 } },
 };
 
+// Footer component with company info, links, contact, and social icons
 const Footer = () => {
   return (
     <motion.footer
@@ -35,6 +37,7 @@ const Footer = () => {
           </p>
         </motion.div>
 
+        {/* Quick Links */}
         <motion.div variants={sectionVariants}>
           <h3 className="text-xl font-bold mb-4 text-[#F59E0B]">Quick Links</h3>
           <ul className="space-y-2">
@@ -88,24 +91,25 @@ const Footer = () => {
           </ul>
         </motion.div>
 
+        {/* Contact Info */}
         <motion.div variants={sectionVariants}>
           <h3 className="text-xl font-bold mb-4 text-[#F59E0B]">Contact Us</h3>
           <p className="text-white">
-            Email: {""}
+            Email:{" "}
             <a className=" hover:underline" href="mailto:W7oCt@example.com">
               info@yadavbus.com
             </a>
           </p>
           <p className="text-white">
-            Phone: {""}{" "}
+            Phone:{" "}
             <a className=" hover:underline" href="tel:123456789">
-              {" "}
               +91-123-456-7890
             </a>
           </p>
           <p className="text-white">Address: 123 Bus Lane, Jaipur, Rajasthan</p>
         </motion.div>
 
+        {/* Social Media Icons */}
         <motion.div variants={sectionVariants}>
           <h3 className="text-xl font-bold mb-4 text-[#F59E0B]">Follow Us</h3>
           <div className="flex space-x-4">
@@ -164,6 +168,7 @@ const Footer = () => {
         </motion.div>
       </div>
 
+      {/* Copyright */}
       <div className="mt-8 border-t border-gray-300 pt-4 text-center text-white">
         <p>© 2025 Yadav Bus Services. All rights reserved.</p>
       </div>
